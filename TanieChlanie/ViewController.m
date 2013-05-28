@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "ParseViewController.h"
+#import "ProductsListViewController.h"
 
 @interface ViewController ()
 
@@ -17,7 +19,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    ParseViewController *parse = [[ParseViewController alloc] init];
+    [parse downloadJSONAsString];
+    [self performSelector:@selector(pok) withObject:self afterDelay:5.0];
 	// Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)pok {
+    ProductsListViewController *products = [[ProductsListViewController alloc] init];
+    NSLog(@"sda %@", self.navigationController);
+    [self.navigationController pushViewController:products animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
