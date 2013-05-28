@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "ParseViewController.h"
 #import "ProductsListViewController.h"
+#import "MBProgressHUD.h"
 
 @interface ViewController ()
 
@@ -16,19 +17,22 @@
 
 @implementation ViewController
 
+- (IBAction)showAll:(id)sender {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Ładowanie...";
+    
+    ParseViewController *parse = [[ParseViewController alloc] init];
+    [parse downloadJSONAsString:^(NSString *result) {
+        [hud hide:YES];
+        ProductsListViewController *products = [[ProductsListViewController alloc] init];
+        [self.navigationController pushViewController:products animated:YES];
+    }];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    ParseViewController *parse = [[ParseViewController alloc] init];
-    [parse downloadJSONAsString];
-    [self performSelector:@selector(pok) withObject:self afterDelay:5.0];
 	// Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)pok {
-    ProductsListViewController *products = [[ProductsListViewController alloc] init];
-    NSLog(@"sda %@", self.navigationController);
-    [self.navigationController pushViewController:products animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

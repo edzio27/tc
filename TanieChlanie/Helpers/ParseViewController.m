@@ -27,12 +27,13 @@
     return _managedObjectContext;
 }
 
-- (void)downloadJSONAsString {
+- (void)downloadJSONAsString:(void(^)(NSString *result))handler; {
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://taniechlanie.pl/JSON/promocje"]];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
             NSDictionary *jsonDict = (NSDictionary *) JSON;
             [self parseDictionaryToCoreDataModel:jsonDict];
+            handler(@"parsed");
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
             NSLog(@"Request Failure Because %@",[error userInfo]);
         }];

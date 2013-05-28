@@ -10,6 +10,6 @@
 
 @interface ParseViewController : UIViewController
 
-- (void)downloadJSONAsString;
+- (void)downloadJSONAsString:(void(^)(NSString *result))handler;
 
 @end
