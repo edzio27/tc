@@ -37,6 +37,7 @@
 		DB025938175505B4006F604E /* ProductsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB025936175505B4006F604E /* ProductsListViewController.xib */; };
 		DB02593C1755185A006F604E /* ProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB02593B1755185A006F604E /* ProductCell.m */; };
 		DB02594217551CC2006F604E /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = DB02594117551CC2006F604E /* Product.m */; };
+		DB02594517552398006F604E /* no-image-blog-one.png in Resources */ = {isa = PBXBuildFile; fileRef = DB02594417552398006F604E /* no-image-blog-one.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +92,7 @@
 		DB02593B1755185A006F604E /* ProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCell.m; sourceTree = "<group>"; };
 		DB02594017551CC2006F604E /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
 		DB02594117551CC2006F604E /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
+		DB02594417552398006F604E /* no-image-blog-one.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-image-blog-one.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 		DB0259041753E920006F604E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DB02594317552390006F604E /* Images */,
 				DB0259051753E920006F604E /* CoreData */,
 			);
 			path = Resources;
@@ -253,6 +256,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		DB02594317552390006F604E /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				DB02594417552398006F604E /* no-image-blog-one.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -311,6 +322,7 @@
 				DB0258F61753DBDC006F604E /* ViewController.xib in Resources */,
 				DB02590C1753EF54006F604E /* ParseViewController.xib in Resources */,
 				DB025938175505B4006F604E /* ProductsListViewController.xib in Resources */,
+				DB02594517552398006F604E /* no-image-blog-one.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,10 +436,14 @@
 		DB0258FA1753DBDC006F604E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Eugeniusz Keptia (U3N98SCUDN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eugeniusz Keptia (U3N98SCUDN)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TanieChlanie/TanieChlanie-Prefix.pch";
 				INFOPLIST_FILE = "TanieChlanie/TanieChlanie-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "C4970276-35EC-48B4-955D-790A27CE0561";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C4970276-35EC-48B4-955D-790A27CE0561";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -435,10 +451,14 @@
 		DB0258FB1753DBDC006F604E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Eugeniusz Keptia (U3N98SCUDN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eugeniusz Keptia (U3N98SCUDN)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TanieChlanie/TanieChlanie-Prefix.pch";
 				INFOPLIST_FILE = "TanieChlanie/TanieChlanie-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "C4970276-35EC-48B4-955D-790A27CE0561";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C4970276-35EC-48B4-955D-790A27CE0561";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

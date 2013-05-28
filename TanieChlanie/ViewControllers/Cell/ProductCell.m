@@ -15,15 +15,15 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 0, 100, 30)];
+        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 0, 100, 30)];
         self.titleLabel.backgroundColor = [UIColor clearColor];
         [self addSubview:self.titleLabel];
         
-        self.priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(280, 0, 40, 30)];
+        self.priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(260, 0, 40, 30)];
         self.priceLabel.backgroundColor = [UIColor clearColor];
         [self addSubview:self.priceLabel];
         
-        self.productImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 30, 30)];
+        self.productImageView = [[UIImageView alloc] initWithFrame:CGRectMake(2, 2, 56, 56)];
         [self addSubview:self.productImageView];
     }
     return self;

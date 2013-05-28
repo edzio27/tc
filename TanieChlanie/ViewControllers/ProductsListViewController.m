@@ -37,7 +37,8 @@
 
 - (UITableView *)tableView {
     if(_tableView == nil) {
-        CGRect rectTableView = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height - 200);
+        CGRect rectTableView = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height
+                                          - self.navigationController.navigationBar.frame.size.height);
         _tableView = [[UITableView alloc] initWithFrame:rectTableView style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -58,13 +59,6 @@
                                        entityForName:@"Shop" inManagedObjectContext:self.managedObjectContext];
         [fetchRequest setEntity:entity];
         _shopList = [[self.managedObjectContext executeFetchRequest:fetchRequest error:&error] mutableCopy];
-        /*
-        for (NSManagedObject *info in fetchedObjects) {
-            NSLog(@"Name: %@", [info valueForKey:@"name"]);
-            NSManagedObject *details = [info valueForKey:@"details"];
-            NSLog(@"Zip: %@", [details valueForKey:@"zip"]);
-        }
-         */
     }
     return _shopList;
 }
@@ -118,10 +112,29 @@
     }
     
     NSManagedObject *details = [[self.productsList objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    cell.priceLabel.text = [details valueForKey:@"price"];
+    cell.priceLabel.text = [NSString stringWithFormat:@"%@", [details valueForKey:@"price"]];
     cell.titleLabel.text = [details valueForKey:@"name"];
+    cell.productImageView.image = [UIImage imageNamed:@"no-image-blog-one"];
+    dispatch_queue_t queue = dispatch_queue_create("com.yourdomain.yourappname", NULL);
+    dispatch_async(queue, ^{
+        NSLog(@"image %@", [details valueForKey:@"imageURL"]);
+        NSURL *url = [NSURL URLWithString:[details valueForKey:@"imageURL"]];
+        NSData * data = [[NSData alloc] initWithContentsOfURL:url];
+        UIImage * image = [[UIImage alloc] initWithData:data];
+        dispatch_async( dispatch_get_main_queue(), ^(void){
+            if(image != nil) {
+                cell.productImageView.image = image;
+            } else {
+                //errorBlock();
+            }
+        });
+    });
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60.0f;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
