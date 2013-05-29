@@ -9,6 +9,7 @@
 #import "ShopListViewController.h"
 #import "AppDelegate.h"
 #import <CoreData/CoreData.h>
+#import "ProductCell.h"
 
 @interface ShopListViewController ()
 
@@ -88,16 +89,11 @@
 #pragma mark tableView datasource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.shopList.count;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSManagedObject *details = [self.shopList objectAtIndex:section];
-    return [details valueForKey:@"name"];
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[self.productsList objectAtIndex:section] count];
+    return self.shopList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -110,24 +106,10 @@
         cell = [[ProductCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     
-    NSManagedObject *details = [[self.productsList objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    cell.priceLabel.text = [NSString stringWithFormat:@"%@", [details valueForKey:@"price"]];
+    NSManagedObject *details = [self.shopList objectAtIndex:indexPath.row];
+    cell.priceLabel.text = [NSString stringWithFormat:@"%d", [[self.productsList objectAtIndex:indexPath.row] count]];
     cell.titleLabel.text = [details valueForKey:@"name"];
     cell.productImageView.image = [UIImage imageNamed:@"no-image-blog-one"];
-    dispatch_queue_t queue = dispatch_queue_create("com.yourdomain.yourappname", NULL);
-    dispatch_async(queue, ^{
-        NSLog(@"image %@", [details valueForKey:@"imageURL"]);
-        NSURL *url = [NSURL URLWithString:[details valueForKey:@"imageURL"]];
-        NSData * data = [[NSData alloc] initWithContentsOfURL:url];
-        UIImage * image = [[UIImage alloc] initWithData:data];
-        dispatch_async( dispatch_get_main_queue(), ^(void){
-            if(image != nil) {
-                cell.productImageView.image = image;
-            } else {
-                //errorBlock();
-            }
-        });
-    });
     
     return cell;
 }
@@ -148,7 +130,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.view addSubview:self.tab]
+    [self.view addSubview:self.tableView];
     // Do any additional setup after loading the view from its nib.
 }
 

@@ -2,7 +2,7 @@
 //  Product.m
 //  TanieChlanie
 //
-//  Created by Edzio27 Edzio27 on 28.05.2013.
+//  Created by Edzio27 Edzio27 on 29.05.2013.
 //  Copyright (c) 2013 Edzio27 Edzio27. All rights reserved.
 //
 
@@ -12,13 +12,14 @@
 
 @implementation Product
 
-@dynamic price;
-@dynamic name;
-@dynamic priceForLiter;
 @dynamic endDate;
-@dynamic startDate;
 @dynamic imageURL;
+@dynamic name;
+@dynamic price;
+@dynamic priceForLiter;
 @dynamic productURL;
+@dynamic startDate;
+@dynamic size;
 @dynamic shop;
 
 @end

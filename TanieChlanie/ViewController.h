@@ -11,5 +11,6 @@
 @interface ViewController : UIViewController
 
 - (IBAction)showAll:(id)sender;
+- (IBAction)shopByShop:(id)sender;
 
 @end

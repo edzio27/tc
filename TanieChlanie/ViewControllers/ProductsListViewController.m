@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import <CoreData/CoreData.h>
 #import "ProductCell.h"
+#import "TMCache.h"
 
 @interface ProductsListViewController ()
 
@@ -113,28 +114,40 @@
     
     NSManagedObject *details = [[self.productsList objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     cell.priceLabel.text = [NSString stringWithFormat:@"%@", [details valueForKey:@"price"]];
-    cell.titleLabel.text = [details valueForKey:@"name"];
+    cell.titleLabel.text = [NSString stringWithFormat:@"%@ - %@ml", [details valueForKey:@"name"], [details valueForKey:@"size"]];
+    cell.dateLabel.text = [NSString stringWithFormat:@"%@ - %@", [details valueForKey:@"endDate"], [details valueForKey:@"startDate"]];
     cell.productImageView.image = [UIImage imageNamed:@"no-image-blog-one"];
-    dispatch_queue_t queue = dispatch_queue_create("com.yourdomain.yourappname", NULL);
-    dispatch_async(queue, ^{
-        NSLog(@"image %@", [details valueForKey:@"imageURL"]);
-        NSURL *url = [NSURL URLWithString:[details valueForKey:@"imageURL"]];
-        NSData * data = [[NSData alloc] initWithContentsOfURL:url];
-        UIImage * image = [[UIImage alloc] initWithData:data];
-        dispatch_async( dispatch_get_main_queue(), ^(void){
-            if(image != nil) {
-                cell.productImageView.image = image;
-            } else {
-                //errorBlock();
-            }
-        });
-    });
     
+    //UIImage *image = [self.cache objectForKey:[details valueForKey:@"productURL"]];
+    [[TMCache sharedCache] objectForKey:[details valueForKey:@"productURL"]
+                  block:^(TMCache *cache, NSString *key, id object) {
+                      UIImage *image = (UIImage *)object;
+                      if(image) {
+                          dispatch_async( dispatch_get_main_queue(), ^(void){
+                              cell.productImageView.image = image;
+                          });
+                      } else {
+                          dispatch_queue_t queue = dispatch_queue_create("com.yourdomain.yourappname", NULL);
+                          dispatch_async(queue, ^{
+                              NSURL *url = [NSURL URLWithString:[details valueForKey:@"imageURL"]];
+                              NSData * data = [[NSData alloc] initWithContentsOfURL:url];
+                              UIImage * image = [[UIImage alloc] initWithData:data];
+                              dispatch_async( dispatch_get_main_queue(), ^(void){
+                                  if(image != nil) {
+                                      cell.productImageView.image = image;
+                                      [[TMCache sharedCache] setObject:image forKey:[details valueForKey:@"productURL"] block:nil];
+                                  } else {
+                                      //errorBlock();
+                                  }
+                              });
+                          });
+                      }
+                  }];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60.0f;
+    return 70.0f;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
