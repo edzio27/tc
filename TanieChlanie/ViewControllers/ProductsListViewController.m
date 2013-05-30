@@ -102,6 +102,26 @@
     return [[self.productsList objectAtIndex:section] count];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 30;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
+    label.backgroundColor = [UIColor redColor];
+    
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.text = [self tableView:self.tableView titleForHeaderInSection:section];
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    
+    [label addSubview:titleLabel];
+    
+    return label;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"Identifier";
     ProductCell *cell = (ProductCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
