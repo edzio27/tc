@@ -11,14 +11,13 @@
 #import "ProductsListViewController.h"
 #import "MBProgressHUD.h"
 #import "ShopListViewController.h"
+#import "SearchViewController.h"
 
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
-
-int(^myBlock)(int) = ^(int number){return number*2;};
 
 - (IBAction)showAll:(id)sender {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -44,10 +43,21 @@ int(^myBlock)(int) = ^(int number){return number*2;};
     }];
 }
 
+- (IBAction)showSearchResult:(id)sender {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Ładowanie...";
+    
+    ParseViewController *parse = [[ParseViewController alloc] init];
+    [parse downloadJSONAsString:^(NSString *result) {
+        [hud hide:YES];
+        SearchViewController *products = [[SearchViewController alloc] init];
+        [self.navigationController pushViewController:products animated:YES];
+    }];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self ]
 	// Do any additional setup after loading the view, typically from a nib.
 }
 

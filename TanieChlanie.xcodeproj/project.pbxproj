@@ -44,6 +44,8 @@
 		DB35C1C01755D32100F66EA1 /* TMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DB35C1BB1755D32100F66EA1 /* TMCache.m */; };
 		DB35C1C11755D32100F66EA1 /* TMDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DB35C1BD1755D32100F66EA1 /* TMDiskCache.m */; };
 		DB35C1C21755D32100F66EA1 /* TMMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DB35C1BF1755D32100F66EA1 /* TMMemoryCache.m */; };
+		DB35C1C71756AE6B00F66EA1 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB35C1C51756AE6B00F66EA1 /* SearchViewController.m */; };
+		DB35C1C81756AE6B00F66EA1 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB35C1C61756AE6B00F66EA1 /* SearchViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +112,9 @@
 		DB35C1BD1755D32100F66EA1 /* TMDiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDiskCache.m; sourceTree = "<group>"; };
 		DB35C1BE1755D32100F66EA1 /* TMMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMMemoryCache.h; sourceTree = "<group>"; };
 		DB35C1BF1755D32100F66EA1 /* TMMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMMemoryCache.m; sourceTree = "<group>"; };
+		DB35C1C41756AE6B00F66EA1 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		DB35C1C51756AE6B00F66EA1 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		DB35C1C61756AE6B00F66EA1 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,6 +270,9 @@
 				DB35C1AE175556FB00F66EA1 /* ShopListViewController.h */,
 				DB35C1AF175556FB00F66EA1 /* ShopListViewController.m */,
 				DB35C1B0175556FB00F66EA1 /* ShopListViewController.xib */,
+				DB35C1C41756AE6B00F66EA1 /* SearchViewController.h */,
+				DB35C1C51756AE6B00F66EA1 /* SearchViewController.m */,
+				DB35C1C61756AE6B00F66EA1 /* SearchViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -368,6 +376,7 @@
 				DB025938175505B4006F604E /* ProductsListViewController.xib in Resources */,
 				DB02594517552398006F604E /* no-image-blog-one.png in Resources */,
 				DB35C1B2175556FB00F66EA1 /* ShopListViewController.xib in Resources */,
+				DB35C1C81756AE6B00F66EA1 /* SearchViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +411,7 @@
 				DB35C1C01755D32100F66EA1 /* TMCache.m in Sources */,
 				DB35C1C11755D32100F66EA1 /* TMDiskCache.m in Sources */,
 				DB35C1C21755D32100F66EA1 /* TMMemoryCache.m in Sources */,
+				DB35C1C71756AE6B00F66EA1 /* SearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

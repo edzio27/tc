@@ -32,6 +32,8 @@
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
             NSDictionary *jsonDict = (NSDictionary *) JSON;
+            /* remove all element from core data */
+            [self removeDataFromDatabase];
             [self parseDictionaryToCoreDataModel:jsonDict];
             handler(@"parsed");
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
@@ -87,6 +89,27 @@
         return [array objectAtIndex:0];
     }
     return nil;
+}
+
+- (void)clearEntity:(NSString *)entity {
+    NSFetchRequest *fetchLLObjects = [[NSFetchRequest alloc] init];
+    [fetchLLObjects setEntity:[NSEntityDescription entityForName:entity inManagedObjectContext:self.managedObjectContext]];
+
+    NSError *error = nil;
+    NSArray *allObjects = [self.managedObjectContext executeFetchRequest:fetchLLObjects error:&error];
+    for (NSManagedObject *object in allObjects) {
+        [self.managedObjectContext deleteObject:object];
+    }
+
+    NSError *saveError = nil;
+    if (![self.managedObjectContext save:&saveError]) {
+        NSLog(@"removed");
+    }
+}
+
+- (void)removeDataFromDatabase {
+    [self clearEntity:@"Product"];
+    [self clearEntity:@"Shop"];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

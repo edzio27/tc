@@ -12,5 +12,6 @@
 
 - (IBAction)showAll:(id)sender;
 - (IBAction)shopByShop:(id)sender;
+- (IBAction)showSearchResult:(id)sender;
 
 @end
