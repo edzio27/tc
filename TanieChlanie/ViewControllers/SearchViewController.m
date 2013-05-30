@@ -30,6 +30,8 @@
 #pragma mark searchbar 
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    self.productsList = nil;
+    self.shopList = nil;
     self.productsList = [[self productsListWithPredicate:searchText] mutableCopy];
     [self.tableView reloadData];
 }
@@ -74,13 +76,13 @@
 - (NSMutableArray *)shopList {
     if(_shopList == nil) {
         _shopList = [[NSMutableArray alloc] init];
-    }
         NSError *error;
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
         NSEntityDescription *entity = [NSEntityDescription
                                        entityForName:@"Shop" inManagedObjectContext:self.managedObjectContext];
         [fetchRequest setEntity:entity];
         _shopList = [[self.managedObjectContext executeFetchRequest:fetchRequest error:&error] mutableCopy];
+    }
     return _shopList;
 }
 
@@ -105,9 +107,9 @@
         [fetchRequest setEntity:entity];
         [fetchRequest setPredicate:predicate];
         NSArray *array = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-        [searchArray addObject:array];
         
         if(array.count > 0) {
+            [searchArray addObject:array];
             [temporaryShopList addObject:details];
         }
     }
@@ -118,7 +120,6 @@
 - (NSMutableArray *)productsList {
     if(_productsList == nil) {
         _productsList = [[NSMutableArray alloc] init];
-    }
         for (int i = 0; i < self.shopList.count; i++) {
             
             NSError *error;
@@ -133,6 +134,7 @@
             NSArray *array = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
             [_productsList addObject:array];
         }
+    }
     return _productsList;
 }
 
