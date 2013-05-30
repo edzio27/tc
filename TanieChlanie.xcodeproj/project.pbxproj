@@ -37,6 +37,10 @@
 		DB025938175505B4006F604E /* ProductsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB025936175505B4006F604E /* ProductsListViewController.xib */; };
 		DB02593C1755185A006F604E /* ProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB02593B1755185A006F604E /* ProductCell.m */; };
 		DB02594517552398006F604E /* no-image-blog-one.png in Resources */ = {isa = PBXBuildFile; fileRef = DB02594417552398006F604E /* no-image-blog-one.png */; };
+		DB0635C11757D1AC00C16099 /* navigation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB0635BF1757D1AC00C16099 /* navigation@2x.png */; };
+		DB0635C21757D1AC00C16099 /* section@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB0635C01757D1AC00C16099 /* section@2x.png */; };
+		DB0635C51757D68900C16099 /* navigation.png in Resources */ = {isa = PBXBuildFile; fileRef = DB0635C31757D68900C16099 /* navigation.png */; };
+		DB0635C61757D68900C16099 /* section.png in Resources */ = {isa = PBXBuildFile; fileRef = DB0635C41757D68900C16099 /* section.png */; };
 		DB35C1AD1755559D00F66EA1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DB35C1AC1755559D00F66EA1 /* MBProgressHUD.m */; };
 		DB35C1B1175556FB00F66EA1 /* ShopListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB35C1AF175556FB00F66EA1 /* ShopListViewController.m */; };
 		DB35C1B2175556FB00F66EA1 /* ShopListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB35C1B0175556FB00F66EA1 /* ShopListViewController.xib */; };
@@ -99,6 +103,10 @@
 		DB02593A1755185A006F604E /* ProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCell.h; sourceTree = "<group>"; };
 		DB02593B1755185A006F604E /* ProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCell.m; sourceTree = "<group>"; };
 		DB02594417552398006F604E /* no-image-blog-one.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-image-blog-one.png"; sourceTree = "<group>"; };
+		DB0635BF1757D1AC00C16099 /* navigation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation@2x.png"; sourceTree = "<group>"; };
+		DB0635C01757D1AC00C16099 /* section@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "section@2x.png"; sourceTree = "<group>"; };
+		DB0635C31757D68900C16099 /* navigation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navigation.png; sourceTree = "<group>"; };
+		DB0635C41757D68900C16099 /* section.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = section.png; sourceTree = "<group>"; };
 		DB35C1AB1755559D00F66EA1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		DB35C1AC1755559D00F66EA1 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		DB35C1AE175556FB00F66EA1 /* ShopListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopListViewController.h; sourceTree = "<group>"; };
@@ -289,6 +297,10 @@
 		DB02594317552390006F604E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DB0635C31757D68900C16099 /* navigation.png */,
+				DB0635C41757D68900C16099 /* section.png */,
+				DB0635BF1757D1AC00C16099 /* navigation@2x.png */,
+				DB0635C01757D1AC00C16099 /* section@2x.png */,
 				DB02594417552398006F604E /* no-image-blog-one.png */,
 			);
 			path = Images;
@@ -377,6 +389,10 @@
 				DB02594517552398006F604E /* no-image-blog-one.png in Resources */,
 				DB35C1B2175556FB00F66EA1 /* ShopListViewController.xib in Resources */,
 				DB35C1C81756AE6B00F66EA1 /* SearchViewController.xib in Resources */,
+				DB0635C11757D1AC00C16099 /* navigation@2x.png in Resources */,
+				DB0635C21757D1AC00C16099 /* section@2x.png in Resources */,
+				DB0635C51757D68900C16099 /* navigation.png in Resources */,
+				DB0635C61757D68900C16099 /* section.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

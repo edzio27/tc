@@ -15,6 +15,7 @@
 @interface ProductsListViewController ()
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UILabel *titleLabel;
 
 /* core data */
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
@@ -27,6 +28,20 @@
 
 #pragma mark -
 #pragma mark initialization
+
+- (UILabel *)titleLabel {
+    if(_titleLabel == nil) {
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, 200, 44)];
+        _titleLabel.backgroundColor = [UIColor clearColor];
+        _titleLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:23];
+        _titleLabel.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.textColor = [UIColor whiteColor];
+        _titleLabel.text = @"Produkty";
+    }
+    return _titleLabel;
+}
+
 
 - (NSManagedObjectContext *)managedObjectContext {
     if(_managedObjectContext == nil) {
@@ -108,18 +123,19 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
 
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
-    label.backgroundColor = [UIColor redColor];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
+    imageView.image = [UIImage imageNamed:@"section"];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
     titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:16];
     titleLabel.text = [self tableView:self.tableView titleForHeaderInSection:section];
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     
-    [label addSubview:titleLabel];
+    [imageView addSubview:titleLabel];
     
-    return label;
+    return imageView;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -133,7 +149,7 @@
     }
     
     NSManagedObject *details = [[self.productsList objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    cell.priceLabel.text = [NSString stringWithFormat:@"%@", [details valueForKey:@"price"]];
+    cell.priceLabel.text = [NSString stringWithFormat:@"%@zł", [details valueForKey:@"price"]];
     cell.titleLabel.text = [NSString stringWithFormat:@"%@ - %@ml", [details valueForKey:@"name"], [details valueForKey:@"size"]];
     cell.dateLabel.text = [NSString stringWithFormat:@"%@ - %@", [details valueForKey:@"endDate"], [details valueForKey:@"startDate"]];
     cell.productImageView.image = [UIImage imageNamed:@"no-image-blog-one"];
@@ -179,11 +195,15 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigation"] forBarMetrics:UIBarMetricsDefault];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self.view addSubview:self.tableView];
-    // Do any additional setup after loading the view from its nib.
+    self.navigationItem.titleView = self.titleLabel;
 }
 
 - (void)didReceiveMemoryWarning

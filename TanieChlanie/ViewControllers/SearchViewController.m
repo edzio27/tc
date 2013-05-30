@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UISearchBar *searchBar;
+@property (nonatomic, strong) UILabel *titleLabel;
 
 /* core data */
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
@@ -36,6 +37,10 @@
     [self.tableView reloadData];
 }
 
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    [self.searchBar resignFirstResponder];
+}
+
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];
 }
@@ -43,10 +48,25 @@
 #pragma mark -
 #pragma mark initialization
 
+- (UILabel *)titleLabel {
+    if(_titleLabel == nil) {
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, 200, 44)];
+        _titleLabel.backgroundColor = [UIColor clearColor];
+        _titleLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:23];
+        _titleLabel.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.textColor = [UIColor whiteColor];
+        _titleLabel.text = @"Wyszukaj";
+    }
+    return _titleLabel;
+}
+
 - (UISearchBar *)searchBar {
     if(_searchBar == nil) {
         _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
         _searchBar.delegate = self;
+        _searchBar.tintColor = [UIColor clearColor];
+        [[_searchBar.subviews objectAtIndex:0] removeFromSuperview];
     }
     return _searchBar;
 }
@@ -62,11 +82,10 @@
 - (UITableView *)tableView {
     if(_tableView == nil) {
         CGRect rectTableView = CGRectMake(0,
-                                          self.searchBar.frame.size.height,
+                                          0,
                                           [[UIScreen mainScreen] bounds].size.width,
                                           [[UIScreen mainScreen] bounds].size.height
                                             - self.navigationController.navigationBar.frame.size.height
-                                            - self.searchBar.frame.size.height
                                             - [UIApplication sharedApplication].statusBarFrame.size.height);
         _tableView = [[UITableView alloc] initWithFrame:rectTableView style:UITableViewStylePlain];
         _tableView.delegate = self;
@@ -160,6 +179,27 @@
     return [[self.productsList objectAtIndex:section] count];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 30;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
+    imageView.image = [UIImage imageNamed:@"section"];
+    
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:16];
+    titleLabel.text = [self tableView:self.tableView titleForHeaderInSection:section];
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    
+    [imageView addSubview:titleLabel];
+    
+    return imageView;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"Identifier";
     ProductCell *cell = (ProductCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
@@ -171,7 +211,7 @@
     }
     
     NSManagedObject *details = [[self.productsList objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    cell.priceLabel.text = [NSString stringWithFormat:@"%@", [details valueForKey:@"price"]];
+    cell.priceLabel.text = [NSString stringWithFormat:@"%@zł", [details valueForKey:@"price"]];
     cell.titleLabel.text = [NSString stringWithFormat:@"%@ - %@ml", [details valueForKey:@"name"], [details valueForKey:@"size"]];
     cell.dateLabel.text = [NSString stringWithFormat:@"%@ - %@", [details valueForKey:@"endDate"], [details valueForKey:@"startDate"]];
     cell.productImageView.image = [UIImage imageNamed:@"no-image-blog-one"];
@@ -217,11 +257,10 @@
     CGRect keyboardFrameBeginRect = [keyboardFrameBegin CGRectValue];
     
     CGRect rectTableView = CGRectMake(0,
-                                      self.searchBar.frame.size.height,
+                                      0,
                                       [[UIScreen mainScreen] bounds].size.width,
                                       [[UIScreen mainScreen] bounds].size.height
                                       - self.navigationController.navigationBar.frame.size.height
-                                      - self.searchBar.frame.size.height
                                       - [UIApplication sharedApplication].statusBarFrame.size.height
                                       - keyboardFrameBeginRect.size.height);
     self.tableView.frame = rectTableView;
@@ -229,11 +268,10 @@
 
 - (void)keyboardDidDisappear:(NSNotification *)notification {
     CGRect rectTableView = CGRectMake(0,
-                                      self.searchBar.frame.size.height,
+                                      0,
                                       [[UIScreen mainScreen] bounds].size.width,
                                       [[UIScreen mainScreen] bounds].size.height
                                       - self.navigationController.navigationBar.frame.size.height
-                                      - self.searchBar.frame.size.height
                                       - [UIApplication sharedApplication].statusBarFrame.size.height);
     self.tableView.frame = rectTableView;
 }
@@ -255,10 +293,13 @@
     [super viewDidLoad];
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.searchBar];
+    self.navigationItem.titleView = self.searchBar;
     // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [self.searchBar setShowsCancelButton:YES animated:NO];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigation"] forBarMetrics:UIBarMetricsDefault];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardDidAppear:)
                                                  name:UIKeyboardWillShowNotification

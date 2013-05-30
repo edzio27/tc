@@ -15,18 +15,23 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 0, 200, 40)];
+        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 0, 240, 40)];
         self.titleLabel.backgroundColor = [UIColor clearColor];
+        self.titleLabel.textColor = [UIColor colorWithRed:0.322 green:0.314 blue:0.345 alpha:1.0];
+        self.titleLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:15];
         [self addSubview:self.titleLabel];
         
-        self.priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(270, 0, 50, 50)];
+        self.priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(245, 30 , 70, 30)];
         self.priceLabel.backgroundColor = [UIColor clearColor];
-        self.priceLabel.font = [UIFont boldSystemFontOfSize:15];
+        self.priceLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:18];
+        self.priceLabel.textColor = [UIColor colorWithRed:0.608 green:0.518 blue:0.953 alpha:1.0];
+        self.priceLabel.textAlignment = NSTextAlignmentRight;
         [self addSubview:self.priceLabel];
         
         self.dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 40, 200, 25)];
         self.dateLabel.backgroundColor = [UIColor clearColor];
-        self.dateLabel.font = [UIFont systemFontOfSize:10];
+        self.dateLabel.textColor = [UIColor colorWithRed:0.322 green:0.314 blue:0.345 alpha:1.0];
+        self.dateLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:11];
         [self addSubview:self.dateLabel];
         
         self.productImageView = [[UIImageView alloc] initWithFrame:CGRectMake(2, 2, 66, 66)];
