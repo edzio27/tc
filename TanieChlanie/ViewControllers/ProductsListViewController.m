@@ -37,7 +37,11 @@
         _titleLabel.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.textColor = [UIColor whiteColor];
-        _titleLabel.text = @"Produkty";
+        if(!self.shopName) {
+            _titleLabel.text = @"Produkty";
+        } else {
+            _titleLabel.text = self.shopName;
+        }
     }
     return _titleLabel;
 }
@@ -68,13 +72,23 @@
 - (NSMutableArray *)shopList {
     if(_shopList == nil) {
         _shopList = [[NSMutableArray alloc] init];
-        
         NSError *error;
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
         NSEntityDescription *entity = [NSEntityDescription
                                        entityForName:@"Shop" inManagedObjectContext:self.managedObjectContext];
         [fetchRequest setEntity:entity];
-        _shopList = [[self.managedObjectContext executeFetchRequest:fetchRequest error:&error] mutableCopy];
+        NSArray *array = [[self.managedObjectContext executeFetchRequest:fetchRequest error:&error] mutableCopy];
+        if(!self.shopName) {
+            _shopList = [array mutableCopy];
+        } else {
+            for(int i = 0; i < array.count; i++) {
+                NSManagedObject *object = [array objectAtIndex:i];
+                if([self.shopName isEqualToString:[object valueForKey:@"name"]]) {
+                    [_shopList addObject:object];
+                }
+            }
+        }
+            
     }
     return _shopList;
 }
@@ -82,7 +96,6 @@
 - (NSMutableArray *)productsList {
     if(_productsList == nil) {
         _productsList = [[NSMutableArray alloc] init];
-        
         for (int i = 0; i < self.shopList.count; i++) {
             
             NSError *error;

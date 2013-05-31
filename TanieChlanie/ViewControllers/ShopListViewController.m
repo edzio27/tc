@@ -10,10 +10,12 @@
 #import "AppDelegate.h"
 #import <CoreData/CoreData.h>
 #import "ProductCell.h"
+#import "ProductsListViewController.h"
 
 @interface ShopListViewController ()
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UILabel *titleLabel;
 
 /* core data */
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
@@ -26,6 +28,19 @@
 
 #pragma mark -
 #pragma mark initialization
+
+- (UILabel *)titleLabel {
+    if(_titleLabel == nil) {
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, 200, 44)];
+        _titleLabel.backgroundColor = [UIColor clearColor];
+        _titleLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:23];
+        _titleLabel.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.textColor = [UIColor whiteColor];
+        _titleLabel.text = @"Wybierz sklep";
+    }
+    return _titleLabel;
+}
 
 - (NSManagedObjectContext *)managedObjectContext {
     if(_managedObjectContext == nil) {
@@ -107,11 +122,23 @@
     }
     
     NSManagedObject *details = [self.shopList objectAtIndex:indexPath.row];
-    cell.priceLabel.text = [NSString stringWithFormat:@"%d", [[self.productsList objectAtIndex:indexPath.row] count]];
+    cell.priceLabel.frame = CGRectMake(70, 30, 200, 30);
+    cell.priceLabel.textAlignment = NSTextAlignmentLeft;
+    cell.priceLabel.text = [NSString stringWithFormat:@"%d produktów", [[self.productsList objectAtIndex:indexPath.row] count]];
+    cell.titleLabel.frame = CGRectMake(70, 0, 240, 40);
     cell.titleLabel.text = [details valueForKey:@"name"];
     cell.productImageView.image = [UIImage imageNamed:@"no-image-blog-one"];
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    ProductsListViewController *products = [[ProductsListViewController alloc] init];
+    NSManagedObject *details = [self.shopList objectAtIndex:indexPath.row];
+    products.shopName = [details valueForKey:@"name"];
+    [self.navigationController pushViewController:products animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -127,10 +154,15 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigation"] forBarMetrics:UIBarMetricsDefault];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self.view addSubview:self.tableView];
+    self.navigationItem.titleView = self.titleLabel;
     // Do any additional setup after loading the view from its nib.
 }
 

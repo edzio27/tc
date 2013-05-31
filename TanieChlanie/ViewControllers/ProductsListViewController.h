@@ -10,4 +10,6 @@
 
 @interface ProductsListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, NSCacheDelegate>
 
+@property (nonatomic, strong) NSString *shopName;
+
 @end
