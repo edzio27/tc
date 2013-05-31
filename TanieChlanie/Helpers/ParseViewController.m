@@ -60,6 +60,8 @@
         [failedBankInfo setValue:[productDictionary objectForKey:@"product_image"] forKey:@"imageURL"];
         [failedBankInfo setValue:[productDictionary objectForKey:@"url"] forKey:@"productURL"];
         [failedBankInfo setValue:[productDictionary objectForKey:@"size"] forKey:@"size"];
+        [failedBankInfo setValue:[productDictionary objectForKey:@"quantity"] forKey:@"quantity"];
+
 
         if(![self getManagetObjectWithName:[productDictionary objectForKey:@"shop"]]) {
             NSManagedObject *failedBankDetails = [NSEntityDescription

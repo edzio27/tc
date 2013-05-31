@@ -213,8 +213,11 @@
     
     NSManagedObject *details = [[self.productsList objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     cell.priceLabel.text = [NSString stringWithFormat:@"%@zł", [details valueForKey:@"price"]];
-    cell.titleLabel.text = [NSString stringWithFormat:@"%@ - %@ml", [details valueForKey:@"name"], [details valueForKey:@"size"]];
-    cell.dateLabel.text = [NSString stringWithFormat:@"%@ - %@", [details valueForKey:@"endDate"], [details valueForKey:@"startDate"]];
+    if([[details valueForKey:@"quantity"] integerValue] > 1) {
+        cell.titleLabel.text = [NSString stringWithFormat:@"%@ - %@x%@ml", [details valueForKey:@"name"], [details valueForKey:@"quantity"], [details valueForKey:@"size"]];
+    } else {
+        cell.titleLabel.text = [NSString stringWithFormat:@"%@ - %@ml", [details valueForKey:@"name"], [details valueForKey:@"size"]];
+    }    cell.dateLabel.text = [NSString stringWithFormat:@"%@ - %@", [details valueForKey:@"endDate"], [details valueForKey:@"startDate"]];
     cell.productImageView.image = [UIImage imageNamed:@"no-image-blog-one"];
     
     [[TMCache sharedCache] objectForKey:[details valueForKey:@"productURL"]
