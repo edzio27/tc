@@ -48,6 +48,8 @@
 		DB0635D11758B0A300C16099 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB0635D01758B0A300C16099 /* MessageUI.framework */; };
 		DB0643901758B41E00C16099 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DB06438F1758B41E00C16099 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DB0643921758B5F800C16099 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB0643911758B5F800C16099 /* SystemConfiguration.framework */; };
+		DB19B98B1758C19600801744 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DB19B9891758C19600801744 /* icon.png */; };
+		DB19B98C1758C19600801744 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB19B98A1758C19600801744 /* icon@2x.png */; };
 		DB35C1AD1755559D00F66EA1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DB35C1AC1755559D00F66EA1 /* MBProgressHUD.m */; };
 		DB35C1B1175556FB00F66EA1 /* ShopListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB35C1AF175556FB00F66EA1 /* ShopListViewController.m */; };
 		DB35C1B2175556FB00F66EA1 /* ShopListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB35C1B0175556FB00F66EA1 /* ShopListViewController.xib */; };
@@ -123,6 +125,8 @@
 		DB06438E1758B41E00C16099 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		DB06438F1758B41E00C16099 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		DB0643911758B5F800C16099 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		DB19B9891758C19600801744 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		DB19B98A1758C19600801744 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		DB35C1AB1755559D00F66EA1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		DB35C1AC1755559D00F66EA1 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		DB35C1AE175556FB00F66EA1 /* ShopListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopListViewController.h; sourceTree = "<group>"; };
@@ -162,6 +166,8 @@
 		DB0258CD1753DBDC006F604E = {
 			isa = PBXGroup;
 			children = (
+				DB19B9891758C19600801744 /* icon.png */,
+				DB19B98A1758C19600801744 /* icon@2x.png */,
 				DB0643911758B5F800C16099 /* SystemConfiguration.framework */,
 				DB0635D01758B0A300C16099 /* MessageUI.framework */,
 				DB0635CE1758A52F00C16099 /* QuartzCore.framework */,
@@ -431,6 +437,8 @@
 				DB0635C61757D68900C16099 /* section.png in Resources */,
 				DB0635C81757F23300C16099 /* back.png in Resources */,
 				DB0635CD175812CF00C16099 /* ProductsFromShopViewController.xib in Resources */,
+				DB19B98B1758C19600801744 /* icon.png in Resources */,
+				DB19B98C1758C19600801744 /* icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,14 +560,15 @@
 		DB0258FA1753DBDC006F604E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Eugeniusz Keptia (U3N98SCUDN)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eugeniusz Keptia (8HUK4D76TV)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Eugeniusz Keptia (9AYU9PFC7E)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eugeniusz Keptia (9AYU9PFC7E)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TanieChlanie/TanieChlanie-Prefix.pch";
 				INFOPLIST_FILE = "TanieChlanie/TanieChlanie-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C4970276-35EC-48B4-955D-790A27CE0561";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "6F0D649C-FA16-417B-B486-31B089DDD2A4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6F0D649C-FA16-417B-B486-31B089DDD2A4";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -567,14 +576,15 @@
 		DB0258FB1753DBDC006F604E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Eugeniusz Keptia (U3N98SCUDN)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eugeniusz Keptia (U3N98SCUDN)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Eugeniusz Keptia (9AYU9PFC7E)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eugeniusz Keptia (9AYU9PFC7E)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TanieChlanie/TanieChlanie-Prefix.pch";
 				INFOPLIST_FILE = "TanieChlanie/TanieChlanie-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C4970276-35EC-48B4-955D-790A27CE0561";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C4970276-35EC-48B4-955D-790A27CE0561";
+				PROVISIONING_PROFILE = "6F0D649C-FA16-417B-B486-31B089DDD2A4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6F0D649C-FA16-417B-B486-31B089DDD2A4";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

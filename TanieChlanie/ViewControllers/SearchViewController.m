@@ -17,6 +17,7 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic) dispatch_queue_t queue;
 
 /* core data */
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
@@ -216,24 +217,22 @@
     cell.dateLabel.text = [NSString stringWithFormat:@"%@ - %@", [details valueForKey:@"endDate"], [details valueForKey:@"startDate"]];
     cell.productImageView.image = [UIImage imageNamed:@"no-image-blog-one"];
     
-    //UIImage *image = [self.cache objectForKey:[details valueForKey:@"productURL"]];
     [[TMCache sharedCache] objectForKey:[details valueForKey:@"productURL"]
                                   block:^(TMCache *cache, NSString *key, id object) {
                                       UIImage *image = (UIImage *)object;
                                       if(image) {
                                           dispatch_async( dispatch_get_main_queue(), ^(void){
-                                              cell.productImageView.image = image;
+                                              [cell.productImageView setImage:image];
                                           });
                                       } else {
-                                          dispatch_queue_t queue = dispatch_queue_create("com.yourdomain.yourappname", NULL);
-                                          dispatch_async(queue, ^{
+                                          dispatch_async(self.queue, ^{
                                               NSURL *url = [NSURL URLWithString:[details valueForKey:@"imageURL"]];
                                               NSData * data = [[NSData alloc] initWithContentsOfURL:url];
                                               UIImage * image = [[UIImage alloc] initWithData:data];
                                               dispatch_async( dispatch_get_main_queue(), ^(void){
                                                   if(image != nil) {
-                                                      cell.productImageView.image = image;
                                                       [[TMCache sharedCache] setObject:image forKey:[details valueForKey:@"productURL"] block:nil];
+                                                      [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
                                                   } else {
                                                       //errorBlock();
                                                   }
@@ -283,6 +282,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        self.queue = dispatch_queue_create("com.yourdomain.yourappname", NULL);
         // Custom initialization
     }
     return self;
