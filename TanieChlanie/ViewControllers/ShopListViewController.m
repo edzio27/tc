@@ -122,12 +122,13 @@
     }
     
     NSManagedObject *details = [self.shopList objectAtIndex:indexPath.row];
-    cell.priceLabel.frame = CGRectMake(70, 30, 200, 30);
+    cell.priceLabel.frame = CGRectMake(20, 30, 200, 30);
     cell.priceLabel.textAlignment = NSTextAlignmentLeft;
     cell.priceLabel.text = [NSString stringWithFormat:@"%d produktów", [[self.productsList objectAtIndex:indexPath.row] count]];
-    cell.titleLabel.frame = CGRectMake(70, 0, 240, 40);
+    cell.titleLabel.frame = CGRectMake(20, 0, 240, 40);
     cell.titleLabel.text = [details valueForKey:@"name"];
-    cell.productImageView.image = [UIImage imageNamed:@"no-image-blog-one"];
+    //cell.productImageView.image = [UIImage imageNamed:@"no-image-blog-one"];
+    cell.productImageView.hidden = YES;
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
     
     return cell;

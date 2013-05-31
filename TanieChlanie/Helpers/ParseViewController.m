@@ -28,7 +28,8 @@
 }
 
 - (void)downloadJSONAsString:(void(^)(NSString *result))handler; {
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://taniechlanie.pl/JSON/promocje"]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://taniechlanie.pl/JSON/promocje"]];
+    [request setTimeoutInterval:40];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
             NSDictionary *jsonDict = (NSDictionary *) JSON;
