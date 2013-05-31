@@ -17,7 +17,7 @@
 
 @interface ViewController ()
 
-@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UIImageView *titleLabel;
 @property (nonatomic, strong) UILabel *authorLabel;
 
 @end
@@ -82,14 +82,11 @@
     return _button3;
 }
 
-- (UILabel *)titleLabel {
+- (UIImageView *)titleLabel {
     if(_titleLabel == nil) {
-        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.width, 80)];
+        _titleLabel = [[UIImageView alloc] initWithFrame:CGRectMake(0, 60, 320, 75)];
         _titleLabel.backgroundColor = [UIColor clearColor];
-        _titleLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:35];
-        _titleLabel.textColor = [UIColor colorWithRed:0.608 green:0.518 blue:0.953 alpha:1.0];
-        _titleLabel.textAlignment = NSTextAlignmentCenter;
-        _titleLabel.text = @"Tanie chlanie";
+        _titleLabel.image = [UIImage imageNamed:@"logo"];
     }
     return _titleLabel;
 }
