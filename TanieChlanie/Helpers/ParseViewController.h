@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol HideIndicatorDelegate <NSObject>
+
+- (void)hideIndicator;
+
+@end
+
 @interface ParseViewController : UIViewController
 
 - (void)downloadJSONAsString:(void(^)(NSString *result))handler;
+@property (nonatomic, weak) id<HideIndicatorDelegate> delegate;
 
 @end

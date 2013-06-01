@@ -9,20 +9,31 @@
 #import "ViewController.h"
 #import "ParseViewController.h"
 #import "ProductsListViewController.h"
-#import "MBProgressHUD.h"
 #import "ShopListViewController.h"
 #import "SearchViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "Reachability.h"
+#import "MBProgressHUD.h"
 
 @interface ViewController ()
 
 @property (nonatomic, strong) UIImageView *titleLabel;
 @property (nonatomic, strong) UILabel *authorLabel;
+@property (nonatomic, strong) MBProgressHUD *progressHUD;
 
 @end
 
 @implementation ViewController
+
+- (MBProgressHUD *)progressHUD {
+    if(_progressHUD == nil) {
+        _progressHUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+        [self.navigationController.view addSubview:_progressHUD];
+        _progressHUD.delegate = self;
+        _progressHUD.labelText = @"Ładowanie...";
+    }
+    return _progressHUD;
+}
 
 - (void)openEmail {
     MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
@@ -121,12 +132,14 @@
 
 - (void)showAll {
     if([self isThereInternetConnection]) {
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.labelText = @"Ładowanie...";
+        [self.progressHUD show:YES];
         
         ParseViewController *parse = [[ParseViewController alloc] init];
+        parse.delegate = self;
         [parse downloadJSONAsString:^(NSString *result) {
-            [hud hide:YES];
+            [self.progressHUD hide:YES];
+            [self.progressHUD removeFromSuperview];
+            self.progressHUD = nil;
             ProductsListViewController *products = [[ProductsListViewController alloc] init];
             [self.navigationController pushViewController:products animated:YES];
         }];
@@ -138,12 +151,13 @@
 
 - (void)shopByShop {
     if([self isThereInternetConnection]) {
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.labelText = @"Ładowanie...";
-        
+        [self.progressHUD show:YES];
         ParseViewController *parse = [[ParseViewController alloc] init];
+        parse.delegate = self;
         [parse downloadJSONAsString:^(NSString *result) {
-            [hud hide:YES];
+            [self.progressHUD hide:YES];
+            [self.progressHUD removeFromSuperview];
+            self.progressHUD = nil;
             ShopListViewController *products = [[ShopListViewController alloc] init];
             [self.navigationController pushViewController:products animated:YES];
         }];
@@ -156,12 +170,13 @@
 
 - (void)showSearchResult {
     if([self isThereInternetConnection]) {
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.labelText = @"Ładowanie...";
-        
+        [self.progressHUD show:YES];
         ParseViewController *parse = [[ParseViewController alloc] init];
+        parse.delegate = self;
         [parse downloadJSONAsString:^(NSString *result) {
-            [hud hide:YES];
+            [self.progressHUD hide:YES];
+            [self.progressHUD removeFromSuperview];
+            self.progressHUD = nil;
             SearchViewController *products = [[SearchViewController alloc] init];
             [self.navigationController pushViewController:products animated:YES];
         }];
@@ -195,6 +210,14 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)hideIndicator {
+    [self.progressHUD hide:YES];
+    [self.progressHUD removeFromSuperview];
+    self.progressHUD = nil;
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Błąd połączenia" message:@"Przekoczono limit czasu!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alertView show];
 }
 
 @end

@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MFMailComposeViewController.h>
+#import "MBProgressHUD.h"
+#import "ParseViewController.h"
 
-@interface ViewController : UIViewController <MFMailComposeViewControllerDelegate>
+@interface ViewController : UIViewController <MFMailComposeViewControllerDelegate, MBProgressHUDDelegate, HideIndicatorDelegate>
 
 @property (nonatomic, strong) UIButton *button1;
 @property (nonatomic, strong) UIButton *button2;

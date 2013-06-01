@@ -13,11 +13,23 @@
 
 @interface ParseViewController ()
 
-@property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
+@property (nonatomic, strong) NSManagedObjectContext* managedObjectContext;
+@property (nonatomic, strong) NSOperationQueue *queue;
 
 @end
 
 @implementation ParseViewController
+
+- (void)hideIndicator {
+    NSLog(@"hide");
+}
+
+- (NSOperationQueue *)queue {
+    if(_queue == nil) {
+        _queue = [[NSOperationQueue alloc] init];
+    }
+    return _queue;
+}
 
 - (NSManagedObjectContext *)managedObjectContext {
     if(_managedObjectContext == nil) {
@@ -29,7 +41,7 @@
 
 - (void)downloadJSONAsString:(void(^)(NSString *result))handler; {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://taniechlanie.pl/JSON/promocje"]];
-    [request setTimeoutInterval:40];
+    [self performSelector:@selector(cancelAllOperations) withObject:self afterDelay:30];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
             NSDictionary *jsonDict = (NSDictionary *) JSON;
@@ -40,7 +52,13 @@
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
             NSLog(@"Request Failure Because %@",[error userInfo]);
         }];
+    [self.queue addOperation:operation];
     [operation start];
+}
+
+- (void)cancelAllOperations {
+    [self.queue cancelAllOperations];
+    [self.delegate hideIndicator];
 }
 
 - (void)parseDictionaryToCoreDataModel:(NSDictionary *)dictionary {

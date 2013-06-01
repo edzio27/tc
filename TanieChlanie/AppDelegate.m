@@ -52,6 +52,13 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (MBProgressHUD *)hud {
+    if(_hud == nil) {
+        _hud = [[MBProgressHUD alloc] initWithWindow:[UIApplication sharedApplication].keyWindow];
+    }
+    return _hud;
+}
+
 #pragma mark -
 #pragma mark CoreData
 

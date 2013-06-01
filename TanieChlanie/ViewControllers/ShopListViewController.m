@@ -53,7 +53,7 @@
 - (UITableView *)tableView {
     if(_tableView == nil) {
         CGRect rectTableView = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height
-                                          - self.navigationController.navigationBar.frame.size.height);
+                                          - self.navigationController.navigationBar.frame.size.height - 30);
         _tableView = [[UITableView alloc] initWithFrame:rectTableView style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;

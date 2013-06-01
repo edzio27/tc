@@ -87,7 +87,7 @@
                                           [[UIScreen mainScreen] bounds].size.width,
                                           [[UIScreen mainScreen] bounds].size.height
                                             - self.navigationController.navigationBar.frame.size.height
-                                            - [UIApplication sharedApplication].statusBarFrame.size.height);
+                                            - [UIApplication sharedApplication].statusBarFrame.size.height - 30);
         _tableView = [[UITableView alloc] initWithFrame:rectTableView style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -217,7 +217,8 @@
         cell.titleLabel.text = [NSString stringWithFormat:@"%@ - %@x%@ml", [details valueForKey:@"name"], [details valueForKey:@"quantity"], [details valueForKey:@"size"]];
     } else {
         cell.titleLabel.text = [NSString stringWithFormat:@"%@ - %@ml", [details valueForKey:@"name"], [details valueForKey:@"size"]];
-    }    cell.dateLabel.text = [NSString stringWithFormat:@"%@ - %@", [details valueForKey:@"endDate"], [details valueForKey:@"startDate"]];
+    }
+    cell.dateLabel.text = [NSString stringWithFormat:@"%@ - %@", [details valueForKey:@"startDate"], [details valueForKey:@"endDate"]];
     cell.productImageView.image = [UIImage imageNamed:@"no-image-blog-one"];
     
     [[TMCache sharedCache] objectForKey:[details valueForKey:@"productURL"]
