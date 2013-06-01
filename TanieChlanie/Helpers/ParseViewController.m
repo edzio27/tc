@@ -44,12 +44,14 @@
     [self performSelector:@selector(cancelAllOperations) withObject:self afterDelay:30];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+            [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(cancelAllOperations) object:self];
             NSDictionary *jsonDict = (NSDictionary *) JSON;
             /* remove all element from core data */
             [self removeDataFromDatabase];
             [self parseDictionaryToCoreDataModel:jsonDict];
             handler(@"parsed");
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+            [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(cancelAllOperations) object:self];
             NSLog(@"Request Failure Because %@",[error userInfo]);
         }];
     [self.queue addOperation:operation];
