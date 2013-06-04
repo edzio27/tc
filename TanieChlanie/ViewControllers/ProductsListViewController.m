@@ -170,7 +170,7 @@
     } else {
         cell.titleLabel.text = [NSString stringWithFormat:@"%@ %@ml", [details valueForKey:@"name"], [details valueForKey:@"size"]];
     }
-    cell.dateLabel.text = [NSString stringWithFormat:@"%@ %@", [details valueForKey:@"startDate"], [details valueForKey:@"endDate"]];
+    cell.dateLabel.text = [NSString stringWithFormat:@"%@ - %@", [details valueForKey:@"startDate"], [details valueForKey:@"endDate"]];
     cell.productImageView.image = [UIImage imageNamed:@"no-image-blog-one"];
  
     [[TMCache sharedCache] objectForKey:[details valueForKey:@"productURL"]

@@ -568,15 +568,15 @@
 		DB0258FA1753DBDC006F604E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Eugeniusz Keptia (9AYU9PFC7E)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eugeniusz Keptia (9AYU9PFC7E)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Eugeniusz Keptia (U3N98SCUDN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eugeniusz Keptia (U3N98SCUDN)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TanieChlanie/TanieChlanie-Prefix.pch";
 				INFOPLIST_FILE = "TanieChlanie/TanieChlanie-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "728C50E9-42CD-4755-861B-F19DE4542CF7";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "728C50E9-42CD-4755-861B-F19DE4542CF7";
+				PROVISIONING_PROFILE = "8A871430-A0D0-4AB6-B098-79A13EB32D3C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8A871430-A0D0-4AB6-B098-79A13EB32D3C";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -584,15 +584,15 @@
 		DB0258FB1753DBDC006F604E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Eugeniusz Keptia (9AYU9PFC7E)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eugeniusz Keptia (9AYU9PFC7E)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Eugeniusz Keptia (U3N98SCUDN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eugeniusz Keptia (U3N98SCUDN)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TanieChlanie/TanieChlanie-Prefix.pch";
 				INFOPLIST_FILE = "TanieChlanie/TanieChlanie-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "728C50E9-42CD-4755-861B-F19DE4542CF7";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "728C50E9-42CD-4755-861B-F19DE4542CF7";
+				PROVISIONING_PROFILE = "8A871430-A0D0-4AB6-B098-79A13EB32D3C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8A871430-A0D0-4AB6-B098-79A13EB32D3C";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
