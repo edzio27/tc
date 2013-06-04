@@ -2,7 +2,7 @@
 //  Shop.m
 //  TanieChlanie
 //
-//  Created by Edzio27 Edzio27 on 27.05.2013.
+//  Created by Edzio27 Edzio27 on 04.06.2013.
 //  Copyright (c) 2013 Edzio27 Edzio27. All rights reserved.
 //
 
@@ -12,5 +12,6 @@
 @implementation Shop
 
 @dynamic name;
+@dynamic imageURL;
 
 @end

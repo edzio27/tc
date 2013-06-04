@@ -33,7 +33,7 @@
     if(_titleLabel == nil) {
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, 200, 44)];
         _titleLabel.backgroundColor = [UIColor clearColor];
-        _titleLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:23];
+        _titleLabel.font = [UIFont fontWithName:@"Courier-Bold" size:23];
         _titleLabel.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.textColor = [UIColor whiteColor];
@@ -127,6 +127,8 @@
     cell.priceLabel.text = [NSString stringWithFormat:@"%d produktów", [[self.productsList objectAtIndex:indexPath.row] count]];
     cell.titleLabel.frame = CGRectMake(20, 0, 240, 40);
     cell.titleLabel.text = [details valueForKey:@"name"];
+    cell.titleLabel.font = [UIFont fontWithName:@"Courier-Bold" size:18];
+    cell.priceLabel.font = [UIFont fontWithName:@"Courier-Bold" size:16];
     //cell.productImageView.image = [UIImage imageNamed:@"no-image-blog-one"];
     cell.productImageView.hidden = YES;
     cell.selectionStyle = UITableViewCellSelectionStyleGray;

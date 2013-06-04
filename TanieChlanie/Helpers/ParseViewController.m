@@ -46,7 +46,6 @@
         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
             [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(cancelAllOperations) object:self];
             NSDictionary *jsonDict = (NSDictionary *) JSON;
-            /* remove all element from core data */
             [self removeDataFromDatabase];
             [self parseDictionaryToCoreDataModel:jsonDict];
             handler(@"parsed");

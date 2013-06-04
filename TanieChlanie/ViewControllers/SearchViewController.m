@@ -53,7 +53,7 @@
     if(_titleLabel == nil) {
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, 200, 44)];
         _titleLabel.backgroundColor = [UIColor clearColor];
-        _titleLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:23];
+        _titleLabel.font = [UIFont fontWithName:@"Courier-Bold" size:23];
         _titleLabel.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.textColor = [UIColor whiteColor];
@@ -187,11 +187,13 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
-    imageView.image = [UIImage imageNamed:@"section"];
+    //imageView.image = [UIImage imageNamed:@"section"];
+    //red="0.69411764710000001" green="0.20000000000000001" blue="0.1450980392" alpha="1"
+    imageView.backgroundColor = [UIColor colorWithRed:0.69411764710000001 green:0.20000000000000001 blue:0.1450980392 alpha:1.0];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
     titleLabel.backgroundColor = [UIColor clearColor];
-    titleLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:16];
+    titleLabel.font = [UIFont fontWithName:@"Courier-Bold" size:16];
     titleLabel.text = [self tableView:self.tableView titleForHeaderInSection:section];
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -212,13 +214,13 @@
     }
     
     NSManagedObject *details = [[self.productsList objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    cell.priceLabel.text = [NSString stringWithFormat:@"%@zł", [details valueForKey:@"price"]];
+    cell.priceLabel.text = [NSString stringWithFormat:@"%@PLN", [details valueForKey:@"price"]];
     if([[details valueForKey:@"quantity"] integerValue] > 1) {
-        cell.titleLabel.text = [NSString stringWithFormat:@"%@ - %@x%@ml", [details valueForKey:@"name"], [details valueForKey:@"quantity"], [details valueForKey:@"size"]];
+        cell.titleLabel.text = [NSString stringWithFormat:@"%@ %@x%@ml", [details valueForKey:@"name"], [details valueForKey:@"quantity"], [details valueForKey:@"size"]];
     } else {
-        cell.titleLabel.text = [NSString stringWithFormat:@"%@ - %@ml", [details valueForKey:@"name"], [details valueForKey:@"size"]];
+        cell.titleLabel.text = [NSString stringWithFormat:@"%@ %@ml", [details valueForKey:@"name"], [details valueForKey:@"size"]];
     }
-    cell.dateLabel.text = [NSString stringWithFormat:@"%@ - %@", [details valueForKey:@"startDate"], [details valueForKey:@"endDate"]];
+    cell.dateLabel.text = [NSString stringWithFormat:@"%@ %@", [details valueForKey:@"startDate"], [details valueForKey:@"endDate"]];
     cell.productImageView.image = [UIImage imageNamed:@"no-image-blog-one"];
     
     [[TMCache sharedCache] objectForKey:[details valueForKey:@"productURL"]

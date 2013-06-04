@@ -23,7 +23,6 @@
 		DB0259071753EB76006F604E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB0259061753EB76006F604E /* CoreData.framework */; };
 		DB02590B1753EF54006F604E /* ParseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0259091753EF54006F604E /* ParseViewController.m */; };
 		DB02590C1753EF54006F604E /* ParseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB02590A1753EF54006F604E /* ParseViewController.xib */; };
-		DB0259121753F260006F604E /* Shop.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0259111753F260006F604E /* Shop.m */; };
 		DB0259271753F4BD006F604E /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0259151753F4BD006F604E /* AFHTTPClient.m */; };
 		DB0259281753F4BD006F604E /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0259171753F4BD006F604E /* AFHTTPRequestOperation.m */; };
 		DB0259291753F4BD006F604E /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0259191753F4BD006F604E /* AFImageRequestOperation.m */; };
@@ -61,6 +60,7 @@
 		DB35C1C21755D32100F66EA1 /* TMMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DB35C1BF1755D32100F66EA1 /* TMMemoryCache.m */; };
 		DB35C1C71756AE6B00F66EA1 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB35C1C51756AE6B00F66EA1 /* SearchViewController.m */; };
 		DB35C1C81756AE6B00F66EA1 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB35C1C61756AE6B00F66EA1 /* SearchViewController.xib */; };
+		DB9F5303175E44F000FC323E /* Shop.m in Sources */ = {isa = PBXBuildFile; fileRef = DB9F5302175E44F000FC323E /* Shop.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,8 +87,6 @@
 		DB0259081753EF54006F604E /* ParseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseViewController.h; sourceTree = "<group>"; };
 		DB0259091753EF54006F604E /* ParseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseViewController.m; sourceTree = "<group>"; };
 		DB02590A1753EF54006F604E /* ParseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParseViewController.xib; sourceTree = "<group>"; };
-		DB0259101753F260006F604E /* Shop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shop.h; sourceTree = "<group>"; };
-		DB0259111753F260006F604E /* Shop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shop.m; sourceTree = "<group>"; };
 		DB0259141753F4BD006F604E /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		DB0259151753F4BD006F604E /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		DB0259161753F4BD006F604E /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -147,6 +145,8 @@
 		DB35C1C41756AE6B00F66EA1 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		DB35C1C51756AE6B00F66EA1 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		DB35C1C61756AE6B00F66EA1 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		DB9F5301175E44F000FC323E /* Shop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shop.h; sourceTree = "<group>"; };
+		DB9F5302175E44F000FC323E /* Shop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shop.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,11 +266,11 @@
 		DB0259051753E920006F604E /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				DB0259101753F260006F604E /* Shop.h */,
-				DB0259111753F260006F604E /* Shop.m */,
 				DB19B99417593FB500801744 /* Product.h */,
 				DB19B99517593FB500801744 /* Product.m */,
 				DB0259011753E901006F604E /* CoreDataModel.xcdatamodeld */,
+				DB9F5301175E44F000FC323E /* Shop.h */,
+				DB9F5302175E44F000FC323E /* Shop.m */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -463,7 +463,6 @@
 				DB0259001753E8B7006F604E /* JSONKit.m in Sources */,
 				DB0259031753E901006F604E /* CoreDataModel.xcdatamodeld in Sources */,
 				DB02590B1753EF54006F604E /* ParseViewController.m in Sources */,
-				DB0259121753F260006F604E /* Shop.m in Sources */,
 				DB0259271753F4BD006F604E /* AFHTTPClient.m in Sources */,
 				DB0259281753F4BD006F604E /* AFHTTPRequestOperation.m in Sources */,
 				DB0259291753F4BD006F604E /* AFImageRequestOperation.m in Sources */,
@@ -484,6 +483,7 @@
 				DB0635CC175812CF00C16099 /* ProductsFromShopViewController.m in Sources */,
 				DB0643901758B41E00C16099 /* Reachability.m in Sources */,
 				DB19B99617593FB500801744 /* Product.m in Sources */,
+				DB9F5303175E44F000FC323E /* Shop.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,15 +568,15 @@
 		DB0258FA1753DBDC006F604E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Eugeniusz Keptia (U3N98SCUDN)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eugeniusz Keptia (U3N98SCUDN)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Eugeniusz Keptia (9AYU9PFC7E)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eugeniusz Keptia (9AYU9PFC7E)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TanieChlanie/TanieChlanie-Prefix.pch";
 				INFOPLIST_FILE = "TanieChlanie/TanieChlanie-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8A871430-A0D0-4AB6-B098-79A13EB32D3C";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8A871430-A0D0-4AB6-B098-79A13EB32D3C";
+				PROVISIONING_PROFILE = "728C50E9-42CD-4755-861B-F19DE4542CF7";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "728C50E9-42CD-4755-861B-F19DE4542CF7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -584,15 +584,15 @@
 		DB0258FB1753DBDC006F604E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Eugeniusz Keptia (U3N98SCUDN)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eugeniusz Keptia (U3N98SCUDN)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Eugeniusz Keptia (9AYU9PFC7E)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eugeniusz Keptia (9AYU9PFC7E)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TanieChlanie/TanieChlanie-Prefix.pch";
 				INFOPLIST_FILE = "TanieChlanie/TanieChlanie-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8A871430-A0D0-4AB6-B098-79A13EB32D3C";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8A871430-A0D0-4AB6-B098-79A13EB32D3C";
+				PROVISIONING_PROFILE = "728C50E9-42CD-4755-861B-F19DE4542CF7";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "728C50E9-42CD-4755-861B-F19DE4542CF7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
