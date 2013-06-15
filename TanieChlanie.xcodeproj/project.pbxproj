@@ -47,6 +47,8 @@
 		DB0635D11758B0A300C16099 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB0635D01758B0A300C16099 /* MessageUI.framework */; };
 		DB0643901758B41E00C16099 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DB06438F1758B41E00C16099 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DB0643921758B5F800C16099 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB0643911758B5F800C16099 /* SystemConfiguration.framework */; };
+		DB17F13E176BA75900F35AB7 /* ProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB17F13C176BA75900F35AB7 /* ProductViewController.m */; };
+		DB17F13F176BA75900F35AB7 /* ProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB17F13D176BA75900F35AB7 /* ProductViewController.xib */; };
 		DB19B98B1758C19600801744 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DB19B9891758C19600801744 /* icon.png */; };
 		DB19B98C1758C19600801744 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB19B98A1758C19600801744 /* icon@2x.png */; };
 		DB19B98E1759335B00801744 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = DB19B98D1759335B00801744 /* logo.png */; };
@@ -125,6 +127,9 @@
 		DB06438E1758B41E00C16099 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		DB06438F1758B41E00C16099 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		DB0643911758B5F800C16099 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		DB17F13B176BA75900F35AB7 /* ProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductViewController.h; sourceTree = "<group>"; };
+		DB17F13C176BA75900F35AB7 /* ProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductViewController.m; sourceTree = "<group>"; };
+		DB17F13D176BA75900F35AB7 /* ProductViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductViewController.xib; sourceTree = "<group>"; };
 		DB19B9891758C19600801744 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		DB19B98A1758C19600801744 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		DB19B98D1759335B00801744 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
@@ -317,6 +322,9 @@
 				DB0635C9175812CF00C16099 /* ProductsFromShopViewController.h */,
 				DB0635CA175812CF00C16099 /* ProductsFromShopViewController.m */,
 				DB0635CB175812CF00C16099 /* ProductsFromShopViewController.xib */,
+				DB17F13B176BA75900F35AB7 /* ProductViewController.h */,
+				DB17F13C176BA75900F35AB7 /* ProductViewController.m */,
+				DB17F13D176BA75900F35AB7 /* ProductViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -447,6 +455,7 @@
 				DB19B98C1758C19600801744 /* icon@2x.png in Resources */,
 				DB19B98E1759335B00801744 /* logo.png in Resources */,
 				DB19B9901759349600801744 /* logo@2x.png in Resources */,
+				DB17F13F176BA75900F35AB7 /* ProductViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +493,7 @@
 				DB0643901758B41E00C16099 /* Reachability.m in Sources */,
 				DB19B99617593FB500801744 /* Product.m in Sources */,
 				DB9F5303175E44F000FC323E /* Shop.m in Sources */,
+				DB17F13E176BA75900F35AB7 /* ProductViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

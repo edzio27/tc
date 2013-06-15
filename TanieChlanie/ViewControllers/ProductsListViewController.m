@@ -11,6 +11,7 @@
 #import <CoreData/CoreData.h>
 #import "ProductCell.h"
 #import "TMCache.h"
+#import "ProductViewController.h"
 
 @interface ProductsListViewController ()
 

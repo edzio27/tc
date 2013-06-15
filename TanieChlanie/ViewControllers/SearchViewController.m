@@ -11,6 +11,7 @@
 #import <CoreData/CoreData.h>
 #import "ProductCell.h"
 #import "TMCache.h"
+#import "ProductViewController.h"
 
 @interface SearchViewController ()
 
@@ -249,6 +250,12 @@
     return 70.0f;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ProductViewController *product = [[ProductViewController alloc] init];
+    product.detail = [[self.productsList objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:product animated:YES];
+}
+
 #pragma mark -
 #pragma mark keyboard
 
@@ -277,8 +284,12 @@
     self.tableView.frame = rectTableView;
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.searchBar resignFirstResponder];
+}
+
 #pragma mark -
-#pragma mark view mwthods
+#pragma mark view methods
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
