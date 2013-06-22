@@ -180,6 +180,7 @@
                       if(image) {
                           dispatch_async( dispatch_get_main_queue(), ^(void){
                               [cell.productImageView setImage:image];
+                              cell.productImageView.clipsToBounds = YES;
                           });
                       } else {
                           dispatch_async(self.queue, ^{
@@ -189,6 +190,7 @@
                               dispatch_async( dispatch_get_main_queue(), ^(void){
                                   if(image != nil) {
                                       [[TMCache sharedCache] setObject:image forKey:[details valueForKey:@"productURL"] block:nil];
+                                      cell.productImageView.clipsToBounds = YES;
                                       [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
                                   } else {
                                       //errorBlock();
@@ -202,6 +204,12 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 70.0f;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ProductViewController *product = [[ProductViewController alloc] init];
+    product.detail = [[self.productsList objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:product animated:YES];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

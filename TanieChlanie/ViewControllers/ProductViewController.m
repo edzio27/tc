@@ -24,6 +24,7 @@
                                       if(image) {
                                           dispatch_async( dispatch_get_main_queue(), ^(void){
                                               [self.productImage setImage:image];
+                                              self.productImage.clipsToBounds = YES;
                                           });
                                       } else {
                                           dispatch_async(queue, ^{
@@ -33,6 +34,7 @@
                                               dispatch_async( dispatch_get_main_queue(), ^(void){
                                                   if(image != nil) {
                                                       [self.productImage setImage:image];
+                                                      self.productImage.clipsToBounds = YES;
                                                       [[TMCache sharedCache] setObject:image forKey:[self.detail valueForKey:@"productURL"] block:nil];
                                                   } else {
                                                       //errorBlock();
