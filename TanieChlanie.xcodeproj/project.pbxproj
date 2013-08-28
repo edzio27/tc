@@ -41,8 +41,6 @@
 		DB0635C51757D68900C16099 /* navigation.png in Resources */ = {isa = PBXBuildFile; fileRef = DB0635C31757D68900C16099 /* navigation.png */; };
 		DB0635C61757D68900C16099 /* section.png in Resources */ = {isa = PBXBuildFile; fileRef = DB0635C41757D68900C16099 /* section.png */; };
 		DB0635C81757F23300C16099 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = DB0635C71757F23300C16099 /* back.png */; };
-		DB0635CC175812CF00C16099 /* ProductsFromShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0635CA175812CF00C16099 /* ProductsFromShopViewController.m */; };
-		DB0635CD175812CF00C16099 /* ProductsFromShopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB0635CB175812CF00C16099 /* ProductsFromShopViewController.xib */; };
 		DB0635CF1758A52F00C16099 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB0635CE1758A52F00C16099 /* QuartzCore.framework */; };
 		DB0635D11758B0A300C16099 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB0635D01758B0A300C16099 /* MessageUI.framework */; };
 		DB0643901758B41E00C16099 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DB06438F1758B41E00C16099 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -62,6 +60,9 @@
 		DB35C1C21755D32100F66EA1 /* TMMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DB35C1BF1755D32100F66EA1 /* TMMemoryCache.m */; };
 		DB35C1C71756AE6B00F66EA1 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB35C1C51756AE6B00F66EA1 /* SearchViewController.m */; };
 		DB35C1C81756AE6B00F66EA1 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB35C1C61756AE6B00F66EA1 /* SearchViewController.xib */; };
+		DB3F85B41792AA7100B71B65 /* Favourite.m in Sources */ = {isa = PBXBuildFile; fileRef = DB3F85B31792AA7100B71B65 /* Favourite.m */; };
+		DB5080D817820FBC004C27ED /* FavouriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5080D617820FBC004C27ED /* FavouriteViewController.m */; };
+		DB5080D917820FBC004C27ED /* FavouriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB5080D717820FBC004C27ED /* FavouriteViewController.xib */; };
 		DB9F5303175E44F000FC323E /* Shop.m in Sources */ = {isa = PBXBuildFile; fileRef = DB9F5302175E44F000FC323E /* Shop.m */; };
 /* End PBXBuildFile section */
 
@@ -119,9 +120,6 @@
 		DB0635C31757D68900C16099 /* navigation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navigation.png; sourceTree = "<group>"; };
 		DB0635C41757D68900C16099 /* section.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = section.png; sourceTree = "<group>"; };
 		DB0635C71757F23300C16099 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
-		DB0635C9175812CF00C16099 /* ProductsFromShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductsFromShopViewController.h; sourceTree = "<group>"; };
-		DB0635CA175812CF00C16099 /* ProductsFromShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductsFromShopViewController.m; sourceTree = "<group>"; };
-		DB0635CB175812CF00C16099 /* ProductsFromShopViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductsFromShopViewController.xib; sourceTree = "<group>"; };
 		DB0635CE1758A52F00C16099 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DB0635D01758B0A300C16099 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		DB06438E1758B41E00C16099 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -150,6 +148,11 @@
 		DB35C1C41756AE6B00F66EA1 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		DB35C1C51756AE6B00F66EA1 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		DB35C1C61756AE6B00F66EA1 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		DB3F85B21792AA7100B71B65 /* Favourite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Favourite.h; sourceTree = "<group>"; };
+		DB3F85B31792AA7100B71B65 /* Favourite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Favourite.m; sourceTree = "<group>"; };
+		DB5080D517820FBC004C27ED /* FavouriteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavouriteViewController.h; sourceTree = "<group>"; };
+		DB5080D617820FBC004C27ED /* FavouriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouriteViewController.m; sourceTree = "<group>"; };
+		DB5080D717820FBC004C27ED /* FavouriteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavouriteViewController.xib; sourceTree = "<group>"; };
 		DB9F5301175E44F000FC323E /* Shop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shop.h; sourceTree = "<group>"; };
 		DB9F5302175E44F000FC323E /* Shop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shop.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -274,6 +277,8 @@
 				DB19B99417593FB500801744 /* Product.h */,
 				DB19B99517593FB500801744 /* Product.m */,
 				DB0259011753E901006F604E /* CoreDataModel.xcdatamodeld */,
+				DB3F85B21792AA7100B71B65 /* Favourite.h */,
+				DB3F85B31792AA7100B71B65 /* Favourite.m */,
 				DB9F5301175E44F000FC323E /* Shop.h */,
 				DB9F5302175E44F000FC323E /* Shop.m */,
 			);
@@ -319,12 +324,12 @@
 				DB35C1C41756AE6B00F66EA1 /* SearchViewController.h */,
 				DB35C1C51756AE6B00F66EA1 /* SearchViewController.m */,
 				DB35C1C61756AE6B00F66EA1 /* SearchViewController.xib */,
-				DB0635C9175812CF00C16099 /* ProductsFromShopViewController.h */,
-				DB0635CA175812CF00C16099 /* ProductsFromShopViewController.m */,
-				DB0635CB175812CF00C16099 /* ProductsFromShopViewController.xib */,
 				DB17F13B176BA75900F35AB7 /* ProductViewController.h */,
 				DB17F13C176BA75900F35AB7 /* ProductViewController.m */,
 				DB17F13D176BA75900F35AB7 /* ProductViewController.xib */,
+				DB5080D517820FBC004C27ED /* FavouriteViewController.h */,
+				DB5080D617820FBC004C27ED /* FavouriteViewController.m */,
+				DB5080D717820FBC004C27ED /* FavouriteViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -450,12 +455,12 @@
 				DB0635C51757D68900C16099 /* navigation.png in Resources */,
 				DB0635C61757D68900C16099 /* section.png in Resources */,
 				DB0635C81757F23300C16099 /* back.png in Resources */,
-				DB0635CD175812CF00C16099 /* ProductsFromShopViewController.xib in Resources */,
 				DB19B98B1758C19600801744 /* icon.png in Resources */,
 				DB19B98C1758C19600801744 /* icon@2x.png in Resources */,
 				DB19B98E1759335B00801744 /* logo.png in Resources */,
 				DB19B9901759349600801744 /* logo@2x.png in Resources */,
 				DB17F13F176BA75900F35AB7 /* ProductViewController.xib in Resources */,
+				DB5080D917820FBC004C27ED /* FavouriteViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,11 +494,12 @@
 				DB35C1C11755D32100F66EA1 /* TMDiskCache.m in Sources */,
 				DB35C1C21755D32100F66EA1 /* TMMemoryCache.m in Sources */,
 				DB35C1C71756AE6B00F66EA1 /* SearchViewController.m in Sources */,
-				DB0635CC175812CF00C16099 /* ProductsFromShopViewController.m in Sources */,
 				DB0643901758B41E00C16099 /* Reachability.m in Sources */,
 				DB19B99617593FB500801744 /* Product.m in Sources */,
 				DB9F5303175E44F000FC323E /* Shop.m in Sources */,
 				DB17F13E176BA75900F35AB7 /* ProductViewController.m in Sources */,
+				DB5080D817820FBC004C27ED /* FavouriteViewController.m in Sources */,
+				DB3F85B41792AA7100B71B65 /* Favourite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

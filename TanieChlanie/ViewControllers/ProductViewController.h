@@ -18,4 +18,8 @@
 @property (nonatomic, strong) IBOutlet UILabel *mediumPrice;
 @property (nonatomic, strong) IBOutlet UILabel *priceLabel;
 
+@property (nonatomic, strong) IBOutlet UIButton *button;
+
+- (IBAction)addToFavourite:(id)sender;
+
 @end

@@ -22,6 +22,11 @@
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
+    
+    /* set back button */
+    UIImage *backButtonHomeImage = [[UIImage imageNamed:@"back"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 20, 0)];
+    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonHomeImage  forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
     return YES;
 }
 

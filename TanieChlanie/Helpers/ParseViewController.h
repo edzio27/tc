@@ -17,6 +17,7 @@
 @interface ParseViewController : UIViewController
 
 - (void)downloadJSONAsString:(void(^)(NSString *result))handler;
+- (void)clearEntity:(NSString *)entity;
 @property (nonatomic, weak) id<HideIndicatorDelegate> delegate;
 
 @end

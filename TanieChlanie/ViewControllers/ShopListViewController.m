@@ -72,7 +72,13 @@
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
         NSEntityDescription *entity = [NSEntityDescription
                                        entityForName:@"Shop" inManagedObjectContext:self.managedObjectContext];
-        NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+        
+        NSSortDescriptor *descriptor = [[NSSortDescriptor alloc]
+                                     initWithKey:@"name"
+                                     ascending:YES
+                                     selector:@selector(localizedCaseInsensitiveCompare:)];
+        
+        //NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
         [fetchRequest setEntity:entity];
         [fetchRequest setSortDescriptors:@[descriptor]];
         _shopList = [[self.managedObjectContext executeFetchRequest:fetchRequest error:&error] mutableCopy];

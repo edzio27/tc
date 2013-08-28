@@ -14,6 +14,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "Reachability.h"
 #import "MBProgressHUD.h"
+#import "FavouriteViewController.h"
 
 @interface ViewController ()
 
@@ -85,12 +86,17 @@
         _button3.layer.masksToBounds = YES;
         _button3.titleLabel.textColor = [UIColor whiteColor];
         _button3.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [_button3 setTitle:@"Wyszukaj" forState:UIControlStateNormal];
+        [_button3 setTitle:@"Ulubione" forState:UIControlStateNormal];
         _button3.titleLabel.font = [UIFont fontWithName:@"Courier-Bold" size:17];
-        [_button3 setBackgroundColor:[UIColor colorWithRed:0.608 green:0.518 blue:0.953 alpha:1.0]];
-        [_button3 addTarget:self action:@selector(showSearchResult) forControlEvents:UIControlEventTouchUpInside];
+        [_button3 setBackgroundColor:[UIColor colorWithRed:0.69411764710000001 green:0.20000000000000001 blue:0.1450980392 alpha:1.0]];
+        [_button3 addTarget:self action:@selector(showFavourite) forControlEvents:UIControlEventTouchUpInside];
     }
     return _button3;
+}
+
+- (void)showFavourite {
+    FavouriteViewController *favourite = [[FavouriteViewController alloc] init];
+    [self.navigationController pushViewController:favourite animated:YES];
 }
 
 - (UIImageView *)titleLabel {
@@ -191,7 +197,7 @@
     self.view.backgroundColor = [UIColor colorWithRed:0.322 green:0.314 blue:0.345 alpha:1.0];
     [self.view addSubview:self.button1];
     [self.view addSubview:self.button2];
-    //[self.view addSubview:self.button3];
+    [self.view addSubview:self.button3];
     [self.view addSubview:self.authorLabel];
 }
 

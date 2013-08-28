@@ -740,7 +740,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">226</int>
+			<int key="maxID">231</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -755,7 +755,19 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">ProductViewController</string>
 					<string key="superclassName">UIViewController</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">addToFavourite:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">addToFavourite:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">addToFavourite:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="button">UIButton</string>
 						<string key="mediumPrice">UILabel</string>
 						<string key="priceLabel">UILabel</string>
 						<string key="productDescription">UILabel</string>
@@ -763,6 +775,10 @@
 						<string key="productName">UILabel</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="button">
+							<string key="name">button</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="mediumPrice">
 							<string key="name">mediumPrice</string>
 							<string key="candidateClassName">UILabel</string>

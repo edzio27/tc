@@ -9,12 +9,85 @@
 #import "ProductViewController.h"
 #import "TMCache.h"
 #import <QuartzCore/QuartzCore.h>
+#import "Shop.h"
+#import "Product.h"
+#import "Favourite.h"
+#import "AppDelegate.h"
 
 @interface ProductViewController ()
+
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) UILabel *titleLabel;
 
 @end
 
 @implementation ProductViewController
+
+- (UILabel *)titleLabel {
+    if(_titleLabel == nil) {
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, 200, 44)];
+        _titleLabel.backgroundColor = [UIColor clearColor];
+        _titleLabel.font = [UIFont fontWithName:@"Courier-Bold" size:23];
+        _titleLabel.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.textColor = [UIColor whiteColor];
+    }
+    return _titleLabel;
+}
+
+- (UIButton *)button {
+    if(_button == nil) {
+        _button = [[UIButton alloc] initWithFrame:CGRectMake(10, 220, 90, 35)];
+        _button.layer.cornerRadius = 10.0f;
+        _button.layer.masksToBounds = YES;
+        _button.titleLabel.textColor = [UIColor whiteColor];
+        _button.titleLabel.textAlignment = NSTextAlignmentCenter;
+        [_button setTitle:@"Ulubione" forState:UIControlStateNormal];
+        _button.titleLabel.font = [UIFont fontWithName:@"Courier-Bold" size:17];
+        [_button setBackgroundColor:[UIColor colorWithRed:0.322 green:0.314 blue:0.345 alpha:1.0]];
+        [_button addTarget:self action:@selector(addToFavourite) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _button;
+}
+
+- (void)addToFavourite {
+    Product *product = (Product *)self.detail;
+    
+    NSError *error;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:@"Favourite" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSArray *array = [[self.managedObjectContext executeFetchRequest:fetchRequest error:&error] mutableCopy];
+    if(! [((NSMutableArray *)[array valueForKey:@"productURL"]) containsObject:product.productURL] ) {
+        Favourite *favourite = [NSEntityDescription insertNewObjectForEntityForName:@"Favourite" inManagedObjectContext:self.managedObjectContext];
+        
+        NSString *shopName = [product.shop.name mutableCopy];
+        [favourite setValue:product.name forKey:@"name"];
+        [favourite setValue:product.price forKey:@"price"];
+        [favourite setValue:product.priceForLiter forKey:@"priceForLiter"];
+        [favourite setValue:product.endDate forKey:@"endDate"];
+        [favourite setValue:product.startDate forKey:@"startDate"];
+        [favourite setValue:product.imageURL forKey:@"imageURL"];
+        [favourite setValue:product.productURL forKey:@"productURL"];
+        [favourite setValue:product.size forKey:@"size"];
+        [favourite setValue:product.quantity forKey:@"quantity"];
+        [favourite setValue:shopName forKey:@"shopName"];
+        if (![self.managedObjectContext save:&error]) {
+            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+        }
+    }
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Dodano" message:@"Produkt dodano do ulubionych!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+}
+
+- (NSManagedObjectContext *)managedObjectContext {
+    if(_managedObjectContext == nil) {
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        _managedObjectContext = appDelegate.managedObjectContext;
+    }
+    return _managedObjectContext;
+}
 
 - (void)loadProductImageView {
      dispatch_queue_t queue = dispatch_queue_create("com.yourdomain.yourappname", NULL);
@@ -101,7 +174,15 @@
     [super viewDidLoad];
     [self addTextToProduct];
     [self loadProductImageView];
+    self.navigationController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemReply target:self action:@selector(dupa)];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    Product *product = (Product *)self.detail;
+    self.titleLabel.text = product.name;
+    self.navigationItem.titleView = self.titleLabel;
+    [self.view addSubview:self.button];
 }
 
 - (void)didReceiveMemoryWarning
